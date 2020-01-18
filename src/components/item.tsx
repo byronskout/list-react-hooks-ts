@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import { TodoItemInterface } from './../interfaces';
 
-const TodoItem = (props: TodoItemInterface) => {
+const Item = (props: TodoItemInterface) => {
   return (
     <div className='todo-item'>
       <div onClick={() => props.handleTodoComplete(props.todo.id)}>
@@ -24,4 +24,4 @@ const TodoItem = (props: TodoItemInterface) => {
     </div>
   )
 }
-export default TodoItem;
+export default Item;
