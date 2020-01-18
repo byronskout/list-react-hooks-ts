@@ -4,12 +4,12 @@ export interface TodoInterface {
     isCompleted: boolean;
   }
 
-  export interface TodoFormInterface {
+  export interface FormInterface {
     todos: TodoInterface[];
     handleTodoCreate: (todo: TodoInterface) => void;
   }
 
-  export interface TodoListInterface {
+  export interface ListInterface {
     handleTodoUpdate: (event: React.ChangeEvent<HTMLInputElement>, id: string) => void;
     handleTodoRemove: (id: string) => void;
     handleTodoComplete: (id: string) => void;
@@ -17,7 +17,7 @@ export interface TodoInterface {
     todos: TodoInterface[]
   }
 
-  export interface TodoItemInterface {
+  export interface ItemInterface {
     handleTodoUpdate: (event: React.ChangeEvent<HTMLInputElement>, id: string) => void;
     handleTodoRemove: (id: string) => void;
     handleTodoComplete: (id: string) => void;

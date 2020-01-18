@@ -1,9 +1,9 @@
 import React from 'react';
 import shortid from 'shortid';
 
-import {TodoInterface, TodoFormInterface} from './../interfaces'
+import {TodoInterface, FormInterface} from './../interfaces'
 
-const Form = (props: TodoFormInterface) => {
+const Form = (props: FormInterface) => {
   const inputRef = React.useRef<HTMLInputElement>(null)
   const [formState, setFormState] = React.useState('')
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {

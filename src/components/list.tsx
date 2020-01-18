@@ -1,9 +1,9 @@
 import React from 'react';
 import Item from './item';
 
-import { TodoListInterface } from './../interfaces'
+import { ListInterface } from './../interfaces'
 
-const List = (props: TodoListInterface) => {
+const List = (props: ListInterface) => {
   return (
     <div className="todo-list">
       <ul>
