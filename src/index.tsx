@@ -11,26 +11,32 @@ import { TodoInterface } from './interfaces';
 import './styles/styles.css';
 
 const TodoListApp = () => {
-    const [todos, setTodos] = React.useState<TodoInterface[]>([])
-  
-    function handleTodoCreate(todo: TodoInterface) {
-      const newTodosState: TodoInterface[] = [...todos]
-        newTodosState.push(todo)
-        setTodos(newTodosState)
-    }
-    
-        return (
-        <div className="todo-list-app">
-            <Form 
-            todos={todos}
-            handleTodoCreate={handleTodoCreate}
-            />
-            <List
-            todos={todos}
-            />
-        </div>
-    )
-  }
+  const [todos, setTodos] = React.useState<TodoInterface[]>([])
+
+  function handleTodoCreate(todo: TodoInterface) {
+    const newTodosState: TodoInterface[] = [...todos]
+    newTodosState.push(todo)
+    setTodos(newTodosState)
+  };
+
+  function handleTodoUpdate(event: React.ChangeEvent<HTMLInputElement>, id: string) {
+    const newTodosState: TodoInterface[] = [...todos]
+    newTodosState.find((todo: TodoInterface) => todo.id === id)!.text = event.target.value
+    setTodos(newTodosState)
+  };
+
+  return (
+    <div className="todo-list-app">
+      <Form
+        todos={todos}
+        handleTodoCreate={handleTodoCreate}
+      />
+      <List
+        todos={todos}
+      />
+    </div>
+  )
+}
 
 ReactDOM.render(<TodoListApp />, document.getElementById('root'));
 
