@@ -25,6 +25,11 @@ const TodoListApp = () => {
     setTodos(newTodosState)
   };
 
+  function handleTodoRemove(id: string) {
+    const newTodosState: TodoInterface[] = todos.filter((todo: TodoInterface) => todo.id !== id)
+    setTodos(newTodosState)
+  };
+
   return (
     <div className="todo-list-app">
       <Form
