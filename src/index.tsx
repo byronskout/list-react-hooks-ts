@@ -37,11 +37,11 @@ const TodoListApp = () => {
     };
 
     function handleTodoBlur(event: React.ChangeEvent<HTMLInputElement>) {
-      if (event.target.value.length === 0) {
-        event.target.classList.add('todo-input-error')
-      } else {
-        event.target.classList.remove('todo-input-error')
-      }
+        if (event.target.value.length === 0) {
+            event.target.classList.add('todo-input-error')
+        } else {
+            event.target.classList.remove('todo-input-error')
+        }
     };
 
     return (
@@ -52,12 +52,17 @@ const TodoListApp = () => {
             />
             <List
                 todos={todos}
+                handleTodoUpdate={handleTodoUpdate}
+                handleTodoRemove={handleTodoRemove}
+                handleTodoComplete={handleTodoComplete}
+                handleTodoBlur={handleTodoBlur}
             />
         </div>
     )
 }
-
-ReactDOM.render(<TodoListApp />, document.getElementById('root'));
+// Render the App in the DOM
+const rootElement = document.getElementById('root')
+render(<TodoListApp />, rootElement)
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
