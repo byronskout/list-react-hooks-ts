@@ -11,36 +11,42 @@ import { TodoInterface } from './interfaces';
 import './styles/styles.css';
 
 const TodoListApp = () => {
-  const [todos, setTodos] = React.useState<TodoInterface[]>([])
+    const [todos, setTodos] = React.useState<TodoInterface[]>([])
 
-  function handleTodoCreate(todo: TodoInterface) {
-    const newTodosState: TodoInterface[] = [...todos]
-    newTodosState.push(todo)
-    setTodos(newTodosState)
-  };
+    function handleTodoCreate(todo: TodoInterface) {
+        const newTodosState: TodoInterface[] = [...todos]
+        newTodosState.push(todo)
+        setTodos(newTodosState)
+    };
 
-  function handleTodoUpdate(event: React.ChangeEvent<HTMLInputElement>, id: string) {
-    const newTodosState: TodoInterface[] = [...todos]
-    newTodosState.find((todo: TodoInterface) => todo.id === id)!.text = event.target.value
-    setTodos(newTodosState)
-  };
+    function handleTodoUpdate(event: React.ChangeEvent<HTMLInputElement>, id: string) {
+        const newTodosState: TodoInterface[] = [...todos]
+        newTodosState.find((todo: TodoInterface) => todo.id === id)!.text = event.target.value
+        setTodos(newTodosState)
+    };
 
-  function handleTodoRemove(id: string) {
-    const newTodosState: TodoInterface[] = todos.filter((todo: TodoInterface) => todo.id !== id)
-    setTodos(newTodosState)
-  };
+    function handleTodoRemove(id: string) {
+        const newTodosState: TodoInterface[] = todos.filter((todo: TodoInterface) => todo.id !== id)
+        setTodos(newTodosState)
+    };
 
-  return (
-    <div className="todo-list-app">
-      <Form
-        todos={todos}
-        handleTodoCreate={handleTodoCreate}
-      />
-      <List
-        todos={todos}
-      />
-    </div>
-  )
+    function handleTodoComplete(id: string) {
+        const newTodosState: TodoInterface[] = [...todos]
+        newTodosState.find((todo: TodoInterface) => todo.id === id)!.isCompleted = !newTodosState.find((todo: TodoInterface) => todo.id === id)!.isCompleted
+        setTodos(newTodosState)
+    };
+
+    return (
+        <div className="todo-list-app">
+            <Form
+                todos={todos}
+                handleTodoCreate={handleTodoCreate}
+            />
+            <List
+                todos={todos}
+            />
+        </div>
+    )
 }
 
 ReactDOM.render(<TodoListApp />, document.getElementById('root'));
