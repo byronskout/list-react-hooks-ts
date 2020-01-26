@@ -36,6 +36,14 @@ const TodoListApp = () => {
         setTodos(newTodosState)
     };
 
+    function handleTodoBlur(event: React.ChangeEvent<HTMLInputElement>) {
+      if (event.target.value.length === 0) {
+        event.target.classList.add('todo-input-error')
+      } else {
+        event.target.classList.remove('todo-input-error')
+      }
+    };
+
     return (
         <div className="todo-list-app">
             <Form
